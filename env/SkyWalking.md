@@ -2,9 +2,13 @@
 # SkyWalking 安装部署
 
 ## 1.安装部署es
+
+```shell
 docker run --name elasticsearch -p 9200:9200  -p 9300:9300 --restart=always -e "discovery.type=single-node" -e ES_JAVA_OPTS="-Xms84m -Xmx512m" -d elasticsearch:7.6.2
+```
 
 ## 2.修改es跨域
+
 进入容器 docker exec -it elasticsearch /bin/bash
 修改配置
 /usr/share/elasticsearch/config/elasticsearch.yml
@@ -15,11 +19,17 @@ http.cors.allow-origin: 允许跨域域名，*代表所有域名
 network.host: 外部访问的IP
 discovery.zen.minimum_master_nodes: 最小主节点个数
 重启es
+
+```url
 http://10.1.104.245:9200/
+```
 
 ## 3.安装es管理页面
+
+```shell
 docker run -d --name elastic-hq -p 5000:5000 --restart always elastichq/elasticsearch-hq
 http://10.1.104.245:5000/#!/clusters/elasticsearch
+```
 
 ## 4.安装Skywalking
 
@@ -45,7 +55,9 @@ docker run --name oap -d -p 1234:1234 -p 11800:11800 -p 12800:12800 --restart al
 docker run --name ui -d -p 18080:8080 --link oap -e SW_OAP_ADDRESS=oap:12800 --restart always apache/skywalking-ui:8.5.0
 ```
 
+```url
 http://10.1.104.245:18080/
+```
 
 ## 5.服务集成
 
@@ -64,7 +76,7 @@ https://archive.apache.org/dist/skywalking/8.5.0/
 -Dskywalking.agent.service_name=dqyun
 ```
 
-http://10.1.104.245:18080/
+[url](http://10.1.104.245:18080/)
 
 ### 5.2 service 模块下 的pom文件添加
 
@@ -110,4 +122,3 @@ http://10.1.104.245:18080/
 ```url
 https://skywalking.apache.org/zh/2022-04-19-how-to-use-the-java-agent-injector/
 ```
-    

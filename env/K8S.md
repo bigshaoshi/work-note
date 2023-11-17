@@ -160,6 +160,6 @@ spec:
               number: 8081
 ```
 
-> 参考资料 
+> 参考资料
 
 - [9-2 Volumes HostPath挂载宿主机路径-_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV14d4y1v73E?p=83&vd_source=0bad64f46c7a949f56951b4a3b6396e0)
