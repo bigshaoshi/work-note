@@ -2,7 +2,7 @@
 
 ## 1. maven plugin
 
-### （1） spring-boot-maven-plugin 
+### （1） spring-boot-maven-plugin
 
 >不用3.0.0以上的
 
